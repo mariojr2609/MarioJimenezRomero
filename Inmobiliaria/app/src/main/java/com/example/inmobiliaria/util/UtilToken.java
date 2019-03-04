@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import com.example.inmobiliaria.R;
 
-public class UtilToken {
+/*public class UtilToken {
     public static void setToken(Context mContext, String token) {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(
                         mContext.getString(R.string.sharedpreferences_filename),
@@ -49,4 +49,4 @@ public class UtilToken {
         String jwt = sharedPreferences.getString(mContext.getString(R.string.jwt_key), null);
         return jwt;
     }
-}
+}*/

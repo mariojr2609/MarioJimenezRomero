@@ -25,7 +25,7 @@ public class GeographySpain {
 
     public static GeographySpain getInstance(Context context){
         if(instance== null){
-            instance = new GeographySpain(context);
+            //instance = new GeographySpain(context);
         }
         regionLabel = context.getString(R.string.geografia_region_label);
         provinciaLabel = context.getString(R.string.geografia_provincia_label);
@@ -35,7 +35,7 @@ public class GeographySpain {
         return instance;
     }
 
-    public GeographySpain(Context context){
+    /*public GeographySpain(Context context){
         Resources res = context.getResources();
         regiones = res.getStringArray(R.array.regiones);
         regionesProvincias = new HashMap<String, String[]>();
@@ -217,7 +217,7 @@ public class GeographySpain {
             }
             Log.d("GeographySpain", "GeographySpain siguiente region " + (regiones.length - i));
         }
-    }
+    }*/
 
     private String[] getProvincias(String region){
         String[] provincias = regionesProvincias.get(region);
