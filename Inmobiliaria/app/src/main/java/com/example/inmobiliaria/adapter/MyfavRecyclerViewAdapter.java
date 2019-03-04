@@ -52,9 +52,8 @@ public class MyfavRecyclerViewAdapter extends RecyclerView.Adapter<MyfavRecycler
         holder.city.setText(mValues.get(position).getCity());
         Glide.with(holder.mView)
                 .load(holder.mItem.getPhotos().get(0))
-                .centerCrop()
+                //.centerCrop()
                 .into(holder.photo);
-
         holder.mView.setOnClickListener(v -> {
             if (null != mListener) {
                 mListener.onListFragmentInteraction(holder.mItem);
@@ -71,14 +70,14 @@ public class MyfavRecyclerViewAdapter extends RecyclerView.Adapter<MyfavRecycler
                     @Override
                     public void onResponse(Call<PropertyResponse> call, Response<PropertyResponse> response) {
                         if (response.code() != 200) {
-                            //Toast.makeText(contexto, "Error in request", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(contexto, "Error in request", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(contexto, "Deleted from favourites", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override
                     public void onFailure(Call<PropertyResponse> call, Throwable t) {
-                        //Toast.makeText(contexto, "Failure", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(contexto, "Failure", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

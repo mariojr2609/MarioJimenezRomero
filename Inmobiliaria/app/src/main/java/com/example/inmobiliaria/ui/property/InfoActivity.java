@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,13 +74,13 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
         setSupportActionBar(toolbar);
         checkOwnerPhotos();
         FloatingActionButton fab = findViewById(R.id.fab);
-        /*fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });
         Intent i = getIntent();
         property = (PropertyResponse) i.getSerializableExtra("property");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -88,23 +90,50 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
             imageViewLeftArrow.setImageDrawable(null);
             imageViewRightArrow.setImageDrawable(null);
         } else {
-            imageViewRightArrow.setOnClickListener(v -> changePictureRight());
-            imageViewLeftArrow.setOnClickListener(v -> changePictureLeft());
+            imageViewRightArrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    InfoActivity.this.changePictureRight();
+                }
+            });
+            imageViewLeftArrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    InfoActivity.this.changePictureLeft();
+                }
+            });
         }
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
         }
-
         mapViewDetails = findViewById(R.id.mapViewDetails);
         mapViewDetails.onCreate(mapViewBundle);
         mapViewDetails.getMapAsync(this);
-        imageViewRightArrow.setOnClickListener(v -> changePictureRight());
-        imageViewLeftArrow.setOnClickListener(v -> changePictureLeft());
-        addPhoto.setOnClickListener(v -> {
-            performFileSearch();
+        imageViewRightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoActivity.this.changePictureRight();
+            }
         });
-        deletePhoto.setOnClickListener(v -> deletePhoto());
+        imageViewLeftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoActivity.this.changePictureLeft();
+            }
+        });
+        addPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoActivity.this.performFileSearch();
+            }
+        });
+        deletePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoActivity.this.deletePhoto();
+            }
+        });
     }
 
     private void loadItems() {
@@ -126,10 +155,13 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
         deletePhoto = findViewById(R.id.deletePhoto);
         if (property.getPhotos().size() == 0) {
             Glide.with(this).load("https://rexdalehyundai.ca/dist/img/nophoto.jpg")
-                    .centerCrop()
+                    //.centerCrop()
                     .into(photo);
         } else {
-            Glide.with(this).load(property.getPhotos().get(0)).centerCrop().into(photo);
+            Glide.with(this).load(property
+                    .getPhotos().get(0))
+                    //.centerCrop()
+                    .into(photo);
         }
         if (jwt == null) {
             addPhoto.setImageDrawable(null);
@@ -243,7 +275,7 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .title(property.getAddress())
                 .snippet("com.example.inmobiliaria")
                 .draggable(true)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.location))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location))
         );
         gmap.moveCamera(CameraUpdateFactory.newLatLng(position));
     }
@@ -347,8 +379,8 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
                         if(propertyMine.getId().equals(property.getId())){
                             Log.d("ok", "ok");
                         }else{
-                            /*addPhoto.setImageDrawable(null);
-                            deletePhoto.setImageDrawable(null);*/
+                            addPhoto.setImageDrawable(null);
+                            deletePhoto.setImageDrawable(null);
                         }
                     }
                 }
@@ -358,4 +390,3 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-}

@@ -29,4 +29,4 @@
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="#00A7A3A3"
         app:srcCompat="@drawable/ic_addphoto" />
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

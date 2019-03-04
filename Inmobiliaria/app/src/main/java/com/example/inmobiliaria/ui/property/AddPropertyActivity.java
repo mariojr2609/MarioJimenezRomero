@@ -86,11 +86,8 @@ public class AddPropertyActivity extends FragmentActivity implements View.OnClic
         tvMunicipio = (TextView) findViewById(R.id.tvMunicipio);
         categories = findViewById(R.id.spinner_category);
         loadAllCategories();
-        addPhoto.setOnClickListener(v -> {
-            performFileSearch();
-        });
-        btnAdd.setOnClickListener(v -> {
-            makeProperty();
+        addPhoto.setOnClickListener(v -> { performFileSearch(); });
+        btnAdd.setOnClickListener(v -> { makeProperty();
             /*new android.os.Handler().postDelayed(
                     () -> Log.i("tag", "This'll run 800 milliseconds later"),
                     800);*/
@@ -166,9 +163,9 @@ public class AddPropertyActivity extends FragmentActivity implements View.OnClic
                     listCategories = response.body().getRows();
                     System.out.println(listCategories);
                     List<String> namesC = new ArrayList<>();
-                    /*for (CategoryResponse category : listCategories) {
+                    for (CategoryResponse category : listCategories) {
                         namesC.add(category.getName());
-                    }*/
+                    }
                     ArrayAdapter<CategoryResponse> adapter = new ArrayAdapter<>(AddPropertyActivity.this, android.R.layout.simple_spinner_dropdown_item, listCategories);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     categories.setAdapter(adapter);

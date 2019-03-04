@@ -60,9 +60,7 @@ public class EditPropertyActivity extends FragmentActivity implements View.OnCli
         property = (EditProperty) i.getSerializableExtra("property");
         loadItems();
         setItems();
-        btnEdit.setOnClickListener(v -> {
-            editProperty();
-        });
+        btnEdit.setOnClickListener(v -> { editProperty(); });
     }
 
     public void loadItems() {
@@ -106,9 +104,9 @@ public class EditPropertyActivity extends FragmentActivity implements View.OnCli
                     listCategories = response.body().getRows();
                     System.out.println(listCategories);
                     List<String> namesC = new ArrayList<>();
-                    /*for (CategoryResponse category : listCategories) {
+                    for (CategoryResponse category : listCategories) {
                         namesC.add(category.getName());
-                    }*/
+                    }
                     ArrayAdapter<CategoryResponse> adapter =
                             new ArrayAdapter<>(EditPropertyActivity.this, android.R.layout.simple_spinner_dropdown_item, listCategories);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -186,7 +184,7 @@ public class EditPropertyActivity extends FragmentActivity implements View.OnCli
             }
             @Override
             public void onFailure(Call<EditProperty> call, Throwable t) {
-                //  Toast.makeText(EditPropertyActivity.this, "Failure", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditPropertyActivity.this, "Failure", Toast.LENGTH_SHORT).show();
             }
         });
     }

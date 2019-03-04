@@ -59,11 +59,11 @@ public class MyanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Myanunci
         holder.city.setText(mValues.get(position).getCity());
         if (holder.mItem.getPhotos().size() != 0) {
             Glide.with(holder.mView).load(holder.mItem.getPhotos().get(0))
-                    .centerCrop()
+                    //.centerCrop()
                     .into(holder.photo);
         } else {
             Glide.with(holder.mView).load("https://rexdalehyundai.ca/dist/img/nophoto.jpg")
-                    .centerCrop()
+                    //.centerCrop()
                     .into(holder.photo);
         }
         holder.mView.setOnClickListener(v -> {
@@ -111,14 +111,14 @@ public class MyanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Myanunci
                     @Override
                     public void onResponse(Call<PropertyResponse> call, Response<PropertyResponse> response) {
                         if (response.code() != 200) {
-                            //Toast.makeText(contexto, "Error in request", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(contexto, "Error in request", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(contexto, "Deleted from favourites", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override
                     public void onFailure(Call<PropertyResponse> call, Throwable t) {
-//                        Toast.makeText(contexto, "Failure", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(contexto, "Failure", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -133,9 +133,9 @@ public class MyanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Myanunci
                 @Override
                 public void onResponse(Call<ContainerOneRowResponse<PropertyResponse>> call, Response<ContainerOneRowResponse<PropertyResponse>> response) {
                     PropertyResponse resp = response.body().getRows();
-                    Intent detailsActivity = new Intent(contexto , InfoActivity.class);
-                    detailsActivity.putExtra("property", resp);
-                    contexto.startActivity(detailsActivity);
+                    Intent infoActivity = new Intent(contexto , InfoActivity.class);
+                    infoActivity.putExtra("property", resp);
+                    contexto.startActivity(infoActivity);
                 }
                 @Override
                 public void onFailure(Call<ContainerOneRowResponse<PropertyResponse>> call, Throwable t) {

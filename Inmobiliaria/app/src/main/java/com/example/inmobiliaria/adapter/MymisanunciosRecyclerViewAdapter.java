@@ -149,9 +149,9 @@ public class MymisanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Mymis
                 editedDto.setZipcode(resp.getZipcode());
                 editedDto.setSize(resp.getSize());
                 editedDto.setTitle(resp.getTitle());
-                Intent editActivity = new Intent(contexto, EditPropertyActivity.class);
-                editActivity.putExtra("property", editedDto);
-                contexto.startActivity(editActivity);
+                Intent editPropertyActivity = new Intent(contexto, EditPropertyActivity.class);
+                editPropertyActivity.putExtra("property", editedDto);
+                contexto.startActivity(editPropertyActivity);
             }
             @Override
             public void onFailure(Call<ContainerOneRowResponse<PropertyResponse>> call, Throwable t) {
