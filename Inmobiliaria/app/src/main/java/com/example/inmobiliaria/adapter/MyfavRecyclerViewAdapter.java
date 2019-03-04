@@ -2,6 +2,7 @@ package com.example.inmobiliaria.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,12 @@ public class MyfavRecyclerViewAdapter extends RecyclerView.Adapter<MyfavRecycler
     }
 
     @Override
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+
+    }
+
+    //habia algunos errores
+    /*@Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         jwt = UtilToken.getToken(contexto);
         holder.mItem = mValues.get(position);
@@ -83,7 +90,7 @@ public class MyfavRecyclerViewAdapter extends RecyclerView.Adapter<MyfavRecycler
             }
             holder.fav.setImageResource(R.drawable.ic_fav);
         });
-    }
+    }*/
 
     @Override
     public int getItemCount() {

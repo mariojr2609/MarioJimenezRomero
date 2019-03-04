@@ -3,6 +3,7 @@ package com.example.inmobiliaria.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -52,6 +53,11 @@ public class MymisanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Mymis
     }
 
     @Override
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+
+    }
+
+    /*@Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         jwt = UtilToken.getToken(contexto);
         holder.mItem = mValues.get(position);
@@ -61,11 +67,11 @@ public class MymisanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Mymis
         holder.city.setText(mValues.get(position).getCity());
         if (holder.mItem.getPhotos().size() != 0) {
             Glide.with(holder.mView).load(holder.mItem.getPhotos().get(0))
-                    .centerCrop()
+                    //.centerCrop()
                     .into(holder.photo);
         } else {
             Glide.with(holder.mView).load("https://rexdalehyundai.ca/dist/img/nophoto.jpg")
-                    .centerCrop()
+                    //.centerCrop()
                     .into(holder.photo);
         }
         holder.mView.setOnClickListener(v -> {
@@ -85,7 +91,6 @@ public class MymisanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Mymis
             AlertDialog dialog = builder.create();
             dialog.show();
         });
-
         holder.constraintLayout.setOnClickListener(v -> {
             System.out.println(holder.mItem.getId());
             service = ServiceGenerator.createService(PropertyService.class);
@@ -103,7 +108,7 @@ public class MymisanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Mymis
                 }
             });
         });
-    }
+    }*/
 
     public void deleteProperty(final ViewHolder holder) {
         String id = holder.mItem.getId();
@@ -150,7 +155,7 @@ public class MymisanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Mymis
                 editedDto.setSize(resp.getSize());
                 editedDto.setTitle(resp.getTitle());
                 Intent editPropertyActivity = new Intent(contexto, EditPropertyActivity.class);
-                editPropertyActivity.putExtra("property", editedDto);
+                //editPropertyActivity.putExtra("property", editedDto);
                 contexto.startActivity(editPropertyActivity);
             }
             @Override

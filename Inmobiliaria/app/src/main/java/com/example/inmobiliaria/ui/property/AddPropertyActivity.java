@@ -47,7 +47,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddPropertyActivity extends FragmentActivity implements View.OnClickListener, GeographyListener {
+public class AddPropertyActivity extends FragmentActivity implements View.OnClickListener {
     public static final int READ_REQUEST_CODE = 42;
     private EditText title, description, price, size, zipcode, address, rooms;
     private String fullAddress, jwt, loc;
@@ -86,12 +86,12 @@ public class AddPropertyActivity extends FragmentActivity implements View.OnClic
         tvMunicipio = (TextView) findViewById(R.id.tvMunicipio);
         categories = findViewById(R.id.spinner_category);
         loadAllCategories();
-        addPhoto.setOnClickListener(v -> { performFileSearch(); });
-        btnAdd.setOnClickListener(v -> { makeProperty();
+        //addPhoto.setOnClickListener(v -> { performFileSearch(); });
+        //btnAdd.setOnClickListener(v -> { makeProperty();
             /*new android.os.Handler().postDelayed(
                     () -> Log.i("tag", "This'll run 800 milliseconds later"),
                     800);*/
-        });
+        //});
     }
 
     @Override
@@ -142,7 +142,7 @@ public class AddPropertyActivity extends FragmentActivity implements View.OnClic
         return loc;
     }
 
-    @Override
+    //@Override
     public void onGeographySelected(Map<String, String> hm) {
         tvRegion.setText(hm.get(GeographySpain.REGION));
         tvProvincia.setText(hm.get(GeographySpain.PROVINCIA));

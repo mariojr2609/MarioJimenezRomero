@@ -21,7 +21,7 @@ import com.example.inmobiliaria.ui.property.AddPropertyActivity;
 import java.util.HashMap;
 
 @SuppressLint("ValidFragment")
-public class GeographySelectorFragment extends DialogFragment implements AdapterView.OnItemSelectedListener, DialogInterface.OnClickListener {
+public class GeographySelectorFragment extends DialogFragment implements AdapterView.OnItemSelectedListener {
     private static GeographySpain geography;
     private AddPropertyActivity gListener;
     private Activity mActivity;
@@ -75,7 +75,7 @@ public class GeographySelectorFragment extends DialogFragment implements Adapter
         spRegion.setOnItemSelectedListener(this);
         spProvincia.setOnItemSelectedListener(this);
         spMunicipio.setOnItemSelectedListener(this);
-        btSearch.setOnClickListener(this);
+        //btSearch.setOnClickListener(this);
         return view;
     }
 
@@ -135,7 +135,7 @@ public class GeographySelectorFragment extends DialogFragment implements Adapter
     public void onNothingSelected(AdapterView<?> arg0) {
     }
 
-    @Override
+    //@Override
     public void onClick(View v) {
         if(v.getId()== R.id.ts_bt_search){
             HashMap<String, String> map = new HashMap<String, String>();

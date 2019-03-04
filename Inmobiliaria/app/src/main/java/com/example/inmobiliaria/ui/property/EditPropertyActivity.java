@@ -36,7 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditPropertyActivity extends FragmentActivity implements View.OnClickListener, GeographyListener {
+public class EditPropertyActivity extends FragmentActivity implements View.OnClickListener{
     private EditText title, description, price, size, zipcode, address, rooms;
     private String fullAddress, jwt, loc;
     private TextView tvRegion;
@@ -60,7 +60,7 @@ public class EditPropertyActivity extends FragmentActivity implements View.OnCli
         property = (EditProperty) i.getSerializableExtra("property");
         loadItems();
         setItems();
-        btnEdit.setOnClickListener(v -> { editProperty(); });
+        //btnEdit.setOnClickListener(v -> { editProperty(); });
     }
 
     public void loadItems() {
@@ -152,7 +152,7 @@ public class EditPropertyActivity extends FragmentActivity implements View.OnCli
         return loc;
     }
 
-    @Override
+    //@Override
     public void onGeographySelected(Map<String, String> hm) {
         tvRegion.setText(hm.get(GeographySpain.REGION));
         tvProvincia.setText(hm.get(GeographySpain.PROVINCIA));
@@ -163,7 +163,7 @@ public class EditPropertyActivity extends FragmentActivity implements View.OnCli
     public void onClick(View v) {
         if (v.getId() == R.id.btProbar) {
             GeographySelectorFragment gs = new GeographySelectorFragment(EditPropertyActivity.this);
-            gs.setOnGeograpySelectedListener(EditPropertyActivity.this);
+            //gs.setOnGeograpySelectedListener(EditPropertyActivity.this);
             FragmentManager fm = getSupportFragmentManager();
             gs.show(fm, "geographySelector");
         }

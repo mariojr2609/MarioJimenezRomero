@@ -77,8 +77,8 @@ public class misanunciosFragment extends Fragment {
                         Toast.makeText(getActivity(), "Error in request", Toast.LENGTH_SHORT).show();
                     } else {
                         properties = response.body().getRows();
-                        adapter = new MymisanunciosRecyclerViewAdapter(context, properties, mListener);
-                        recyclerView.setAdapter(adapter);
+                        //adapter = new MymisanunciosRecyclerViewAdapter(context, properties, mListener);
+                        //recyclerView.setAdapter(adapter);
                     }
                 }
                 @Override

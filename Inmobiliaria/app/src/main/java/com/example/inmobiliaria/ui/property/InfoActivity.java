@@ -71,16 +71,16 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
         jwt = UtilToken.getToken(InfoActivity.this);
         idUser = UtilToken.getToken(getApplicationContext());
         System.out.println(idUser);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         checkOwnerPhotos();
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //FloatingActionButton fab = findViewById(R.id.fab);
+        /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
         Intent i = getIntent();
         property = (PropertyResponse) i.getSerializableExtra("property");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -184,10 +184,11 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 public void onResponse(Call<PhotoResponse> call, Response<PhotoResponse> response) {
                                     if (response.isSuccessful()) {
                                         Toast.makeText(InfoActivity.this, "Photo deleted", Toast.LENGTH_SHORT).show();
-                                    }else {
+                                    } else {
                                         Toast.makeText(InfoActivity.this, "no is.Successful DELETE", Toast.LENGTH_SHORT).show();
                                     }
                                 }
+
                                 @Override
                                 public void onFailure(Call<PhotoResponse> call, Throwable t) {
                                     Toast.makeText(InfoActivity.this, "Failure DELETE", Toast.LENGTH_SHORT).show();
@@ -195,7 +196,7 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
                             });
                         }
                     }
-                }else {
+                } else {
                     Toast.makeText(InfoActivity.this, "no is.Successful GET", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -354,6 +355,7 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
                         Log.e("Upload error", response.errorBody().toString());
                     }
                 }
+
                 @Override
                 public void onFailure(Call<PhotoUploadResponse> call, Throwable t) {
                     Log.e("Upload error", t.getMessage());
@@ -366,27 +368,29 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    public void checkOwnerPhotos(){
+    public void checkOwnerPhotos() {
         service = ServiceGenerator.createService(PropertyService.class, jwt, autentication.JWT);
         Call<ContainerResponse<PropertyFavsResponse>> callProp = service.getMine();
         callProp.enqueue(new Callback<ContainerResponse<PropertyFavsResponse>>() {
             @Override
             public void onResponse(Call<ContainerResponse<PropertyFavsResponse>> call, Response<ContainerResponse<PropertyFavsResponse>> response) {
-                if(response.isSuccessful()){
-                    for(PropertyFavsResponse propertyMine : response.body().getRows()){
+                if (response.isSuccessful()) {
+                    for (PropertyFavsResponse propertyMine : response.body().getRows()) {
                         System.out.println(propertyMine.getId());
                         System.out.println(property.getId());
-                        if(propertyMine.getId().equals(property.getId())){
+                        if (propertyMine.getId().equals(property.getId())) {
                             Log.d("ok", "ok");
-                        }else{
+                        } else {
                             addPhoto.setImageDrawable(null);
                             deletePhoto.setImageDrawable(null);
                         }
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<ContainerResponse<PropertyFavsResponse>> call, Throwable t) {
             }
         });
     }
+}

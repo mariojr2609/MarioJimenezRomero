@@ -3,6 +3,7 @@ package com.example.inmobiliaria.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -50,6 +51,11 @@ public class MyanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Myanunci
     }
 
     @Override
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+
+    }
+    //habia algunos fallos
+    /*@Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         jwt = UtilToken.getToken(contexto);
         holder.mItem = mValues.get(position);
@@ -142,12 +148,13 @@ public class MyanunciosRecyclerViewAdapter extends RecyclerView.Adapter<Myanunci
                 }
             });
         });
-    }
+    }*/
 
     @Override
     public int getItemCount() {
         return mValues.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView title;
