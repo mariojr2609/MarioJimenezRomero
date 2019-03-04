@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Inmobiliaria</string>
+    <string name="register_contraseña_no_segura" />
+    <string name="register_contraseña_incorrecta" />
+    <string name="error" />
+    <string name="login_error" />
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="Error">Error...</string>
+    <string name="title_home">Home</string>
+    <string name="tittle_fav">Fav</string>
+    <string name="tittle_mylist">Mylist</string>
+    <string name="title_iniciarsesion">Login</string>
+    <string name="title_cerrarsesion">logout</string>
+
+    <!-- PROPERTIES LIST -->
+    <string name="list_title">Title</string>
+    <string name="price">Price</string>
+    <string name="size">Size</string>
+    <string name="city">City</string>
+    <string name="province">Province</string>
+
+    <!-- DIALOGS -->
+    <string name="title_add">WARNING</string>
+    <string name="message_add">You have to log in! Shall we go to the Login Page?</string>
+    <string name="message_logout">This action will close your session. Continue?</string>
+    <string name="go">Go</string>
+    <string name="cancel">Cancel</string>
+    <string name="message_delete">This property will be deleted, are you sure?</string>
+
+    <!-- PROPERTY -->
+    <string name="title_prop">Title</string>
+    <string name="description_prop">Description</string>
+    <string name="price_prop">Price</string>
+    <string name="size_prop">Size</string>
+    <string name="rooms_prop">Rooms</string>
+    <string name="zipcode_prop">ZIP Code</string>
+    <string name="address_prop">Street Name, Number</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="category_prop">Category</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="ok">op</string>
+
+    <!--Geography-->
+    <string name="ready_bt_label">Ready</string>
+    <string name="region_dialog">Region: </string>
+    <string name="province_dialog">Province: </string>
+    <string name="city_dialog">City: </string>
+    <string name="geografia_region_label">Region</string>
+    <string name="geografia_provincia_label">Province</string>
+    <string name="geografia_ciudad_label">City</string>
+    <string name="geografia_provincia_sin_region_label">Province sin region</string>
+    <string name="geografia_ciudad_sin_provincia_label">City sin province</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

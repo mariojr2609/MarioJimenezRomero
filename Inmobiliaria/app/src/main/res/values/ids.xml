@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="item_number" type="id" />
+    <item name="buscarAnuncioNombre" type="id" />
+    <item name="imagenAnuncio" type="id" />
+</resources>
